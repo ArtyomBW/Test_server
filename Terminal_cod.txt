@@ -1,0 +1,17 @@
+| Komanda                   | Vazifasi                                          |
+| ----------------------    | ------------------------------------------------- |
+| pwd                       | Hozirgi joylashgan papkani ko‘rsatadi             |
+| ls                        | Fayllar va papkalarni ko‘rsatadi                  |
+| cd <papka>                | Papkaga kirish                                    |
+| cd ..                     | Orqaga chiqish                                    |
+| mkdir <nom>               | Yangi papka yaratish                              |
+| touch <nom>.txt           | Yangi fayl yaratish                               |
+| nano <nom>.txt            | Matnli faylni ochish (tahrirlash)                 |
+| rm <fayl>                 | Faylni o‘chirish                                  |
+| rm -r <papka>             | Papkani ichidagilari bilan o‘chirish              |
+| apt update                | Paketlar ro‘yxatini yangilash                     |
+| apt install <dastur>      | Dastur o‘rnatish (masalan: apt install python3)   |
+| python3 -m venv venv      | Venv o'rnatish                                    |
+| source venv/bin/activate  | Venv ochirish                                     |
+
+

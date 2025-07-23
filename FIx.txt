@@ -1,0 +1,77 @@
+
+3) postgres password update
+
+            sudo -u postgres psql
+
+   keiyingi qadam
+
+            ALTER USER postgres WITH PASSWORD 'New_password';
+
+    parolni tekshirish
+
+            psql -U postgres -W
+
+
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'Django_Aiogram',
+        'USER': 'postgres',
+        'PASSWORD': 'New_password',      <---- New Password
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
+}
+
+
+
+4) one to one
+
+UserProfile va User modeli bor.
+Har bir foydalanuvchining faqat bitta profili bo‘lishi kerak.
+Bu — 1:1 bog‘lanish.
+
+
+
+class Author(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.EmailField()
+
+    def __str__(self):
+        return self.name
+
+
+class Password(models.Model):
+    password = models.CharField(max_length=100)
+
+    #  1 ga 1 bog'lanish
+
+    author = models.OneToOneField(
+        Author,
+        on_delete=models.CASCADE,
+        related_name='password_info',)
+
+    def __str__(self):
+        return self.password
+
+
+# author = Author.objects.get(id=1)
+# print(author.password_info.password)
+
+
+5) Fixtures loihalarni ishlatishda ma'lumotlarni zahira nusxasini saqlab qoyish uchun
+BU test rejimida loihalarga bitta kod yordamida ancha product oqshish imkonini beradi
+Avvaldan mavjud ma'lumotlarni quyidagi kodlar bilan saqlash mumkun
+
+	python manage.py dumpdata apps.Category --indent 4 > category.json
+
+Bu cod lohixa ichida jangi json papka ochib bor ma'lumotlarni json formatida saqlaydi
+
+va mavjud codlarni ishga tushurish uchun
+
+    make product-json
+
+terminal codi ishlatiladi
+
+TEST UCHUN ISHLATILADI
